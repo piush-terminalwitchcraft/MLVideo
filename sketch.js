@@ -11,7 +11,7 @@ This example uses p5 preload function to create the classifier
 let count = 0
 let resultLabelArray = [];
 let resultValueArray = [];
-
+var link;
 // Classifier Variable
 let classifier;
 // Model URL
@@ -29,16 +29,17 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(720,480, CENTER);
+  createCanvas(720, 480, CENTER);
   // Create the video
   video = createCapture(video);
-  video.size(720,480, CENTER);
+  video.size(720, 480, CENTER);
   video.hide();
 
 
   flippedVideo = ml5.flipImage(video)
   // Start classifying
   classifyVideo();
+  attachClickListener();
 }
 
 function draw() {
@@ -75,7 +76,21 @@ function gotResult(error, results) {
   resultLabelArray[count++] = label;
   classifyVideo();
   // console.log(resultValueArray);
-  const encodedData1 = encodeURIComponent(JSON.stringify(resultLabelArray));
-  const encodedData2 = encodeURIComponent(JSON.stringify(resultValueArray));
-  const link = `https://prep-hive.vercel.app/Summary?data1=${encodedData1}&data2=${encodedData2}`;
+
+
+
 }
+
+// console.log(document);
+
+// document.getElementById("submitVideo").addEventListener("click",()=>{window.location.href =  link;});
+
+function attachClickListener() {
+  document.getElementById("submitVideo").addEventListener("click", () => {
+    const encodedData1 = encodeURIComponent(JSON.stringify(resultLabelArray));
+    const encodedData2 = encodeURIComponent(JSON.stringify(resultValueArray));
+    link = `https://prep-hive.vercel.app/Summary?data1=${encodedData1}&data2=${encodedData2}&type=video`;
+    window.location.href = link;
+  });
+}
+
