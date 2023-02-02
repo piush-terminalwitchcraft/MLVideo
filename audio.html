@@ -123,11 +123,13 @@
             const encodedData1 = encodeURIComponent(JSON.stringify(resultClassArray));
             const encodedData2 = encodeURIComponent(JSON.stringify(resultValueArray));
             const link = `https://prep-hive.vercel.app/Summary?data1=${encodedData1}&data2=${encodedData2}`;
+			window.open(link);
             // Stop the recognition in 5 seconds.
             // setTimeout(() => recognizer.stopListening(), 5000);
         }
     </script>
 
 </body>
+
 
 </html>
