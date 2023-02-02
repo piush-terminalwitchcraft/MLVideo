@@ -8,6 +8,9 @@ ml5 Example
 Webcam Image Classification using a pre-trained customized model and p5.js
 This example uses p5 preload function to create the classifier
 === */
+let count = 0
+let resultLabelArray = [];
+let resultValueArray = [];
 
 // Classifier Variable
 let classifier;
@@ -67,5 +70,12 @@ function gotResult(error, results) {
   // console.log(results[0]);
   label = results[0].label;
   // Classifiy again!
+
+  resultValueArray[count] = results[0].confidence;
+  resultLabelArray[count++] = label;
   classifyVideo();
+  // console.log(resultValueArray);
+  const encodedData1 = encodeURIComponent(JSON.stringify(resultLabelArray));
+  const encodedData2 = encodeURIComponent(JSON.stringify(resultValueArray));
+  const link = `https://prep-hive.vercel.app/Summary?data1=${encodedData1}&data2=${encodedData2}`;
 }
