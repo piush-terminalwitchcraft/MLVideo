@@ -137,7 +137,7 @@
                 flag = 0;
                 const encodedData1 = encodeURIComponent(JSON.stringify(resultClassArray));
                 const encodedData2 = encodeURIComponent(JSON.stringify(resultValueArray));
-                link = `http://localhost:3000/Summary?data1=${encodedData1}&data2=${encodedData2}&type=audio`;
+                link = `https://prep-hive.vercel.app/Summary?data1=${encodedData1}&data2=${encodedData2}&type=audio`;
                 window.location.href = link;
 
             }

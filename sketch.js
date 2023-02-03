@@ -89,7 +89,7 @@ function attachClickListener() {
   document.getElementById("submitVideo").addEventListener("click", () => {
     const encodedData1 = encodeURIComponent(JSON.stringify(resultLabelArray));
     const encodedData2 = encodeURIComponent(JSON.stringify(resultValueArray));
-    link = `http://localhost:3000/Summary?data1=${encodedData1}&data2=${encodedData2}&type=video`;
+    link = `http://prep-hive.vercel.app/Summary?data1=${encodedData1}&data2=${encodedData2}&type=video`;
     window.location.href = link;
   });
 }
